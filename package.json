@@ -1,0 +1,33 @@
+{
+  "name": "devbootcamp-api",
+  "version": "1.0.0",
+  "description": "devcamper backend api",
+  "main": "server.js",
+  "scripts": {
+    "start": "NODE_ENV=production node server",
+    "dev": "nodemon server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pjblitz86/DevBootCamp-API.git"
+  },
+  "keywords": [
+    "dev",
+    "camper",
+    "bootcamp",
+    "api"
+  ],
+  "author": "PJ",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pjblitz86/DevBootCamp-API/issues"
+  },
+  "homepage": "https://github.com/pjblitz86/DevBootCamp-API#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.4"
+  }
+}
