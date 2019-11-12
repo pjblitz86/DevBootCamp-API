@@ -5,6 +5,11 @@ const colors = require('colors');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const mongoSanitize = require('express-mongo-sanitize');
+const helmet = require('helmet');
+const xssClean = require('xss-clean');
+const hpp = require('hpp');
+const cors = require('cors');
+const expressRateLimit = require('express-rate-limit');
 const fileupload = require('express-fileupload');
 const errorHandler = require('./middleware/error');
 const connectDB = require('./config/db');
@@ -28,7 +33,18 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 app.use(fileupload());
+
+// api basic security packages
 app.use(mongoSanitize());
+app.use(helmet());
+app.use(xssClean());
+const limiter = expressRateLimit({
+  windowMs: 10 * 60 * 1000, // 10mins
+  max: 100
+});
+app.use(limiter);
+app.use(hpp());
+app.use(cors());
 
 app.use(express.static(path.join(__dirname, 'public')));
 
